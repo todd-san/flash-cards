@@ -23,16 +23,15 @@ class ViewController: UIViewController {
     // Class Constants & Variables
     var currentCard = 0
     var cards: Array<Card> = []
-    var deck = Deck(cards: [])
-    
-    var Game = CardGame(cardDeck: Deck(cards: []), name: "First Game", buffer: 15)
-    
+    var cardDeck = Deck()
+    var Game = CardGame(cardDeck: Deck(), name: "First Game", buffer: 15)
     
     // Class Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.Game.cardDeck = self.loadExplicitCardDeck()
+        self.cardDeck = self.Game.cardDeck
         
         
 //        self.deckSizeLabel.text = String(self.cards.count)
@@ -126,14 +125,14 @@ class ViewController: UIViewController {
 //                print("Swiped right")
                 triggerPreviousCard(sender: Any.self)
             case UISwipeGestureRecognizerDirection.down:
-//                print("Swiped down")
-                appendKnownCardArray(sender: Any.self)
+                print("Swiped down")
+//                appendKnownCardArray(sender: Any.self)
             case UISwipeGestureRecognizerDirection.left:
 //                print("Swiped left")
                 triggerNextCard(sender: Any.self)
             case UISwipeGestureRecognizerDirection.up:
-//                print("Swiped up")
-                appendUnknownCardArray(sender: Any.self)
+                print("Swiped up")
+//                appendUnknownCardArray(sender: Any.self)
             default:
                 break
             }
@@ -162,7 +161,7 @@ class ViewController: UIViewController {
         if self.currentCard >= self.cards.count{
             self.currentCard = 0
         }
-        self.cardLabel.text = self.cards[self.currentCard].front
+        self.cardLabel.text = self.deck.cards[self.currentCard].front
         self.cardDefinitionLabel.text = " "
         self.currentCardLabel.text = String(self.currentCard)
     }
@@ -170,7 +169,7 @@ class ViewController: UIViewController {
     func triggerPreviousCard(_ sender: Any) {
         
         if self.currentCard == 0 {
-            self.currentCard = self.cards.count - 1
+            self.currentCard = self.deck.cards.count - 1
             self.cardLabel.text = self.cards[self.currentCard].front
             self.cardDefinitionLabel.text = " "
             self.currentCardLabel.text = String(self.currentCard)
@@ -193,70 +192,70 @@ class ViewController: UIViewController {
         }
     }
     
-    func appendKnownCardArray(sender:Any){
-        // Add the card to the 'knownCards' array
-        self.knownCards.append(Card(front:self.cards[self.currentCard].front,
-                                    back: self.cards[self.currentCard].back))
-        
-        // Check to see if the added card is a duplicate
-            // If duplicate --> remove
-            // If not --> do nothing
-        if self.knownCards.filter( {return $0.front ==
-            self.cards[self.currentCard].front && $0.back ==
-            self.cards[self.currentCard].back}).count > 1  {
-            self.knownCards.remove(at: self.knownCards.count - 1)
-        }
-        
-        // Check to see if the added card is in the 'unknownCards' array
-            // If it is, remove it
-            // If it is not, do nothing
-        if self.unknownCards.filter( {return $0.front ==
-            self.cards[self.currentCard].front &&
-            $0.back == self.cards[self.currentCard].back}).count >= 1 {
-            
-            let currentCardIndexInUnknownCardList = self.unknownCards.index(where:
-                {$0.front == self.cards[self.currentCard].front})
-            self.unknownCards.remove(at: currentCardIndexInUnknownCardList!)
-            self.unknownCardCount.text = String(unknownCards.count)
-        }
-        
-        // Update the knownCardCount
-        self.knownCardCount.text = String(knownCards.count)
-        
-        // Animate the counter to make it look pretty!
-        // self.knownCardCount.animateToFont(UIFont.systemFont(ofSize: 100), withDuration: 1)
-        // self.knownCardCount.animateToFont(UIFont.systemFont(ofSize: 16), withDuration: 1)
-        
-//        self.degradeCardArray()
-        
-    }
+//    func appendKnownCardArray(sender:Any){
+//        // Add the card to the 'knownCards' array
+//        self.knownCards.append(Card(front:self.cards[self.currentCard].front,
+//                                    back: self.cards[self.currentCard].back))
+//        
+//        // Check to see if the added card is a duplicate
+//            // If duplicate --> remove
+//            // If not --> do nothing
+//        if self.knownCards.filter( {return $0.front ==
+//            self.cards[self.currentCard].front && $0.back ==
+//            self.cards[self.currentCard].back}).count > 1  {
+//            self.knownCards.remove(at: self.knownCards.count - 1)
+//        }
+//        
+//        // Check to see if the added card is in the 'unknownCards' array
+//            // If it is, remove it
+//            // If it is not, do nothing
+//        if self.unknownCards.filter( {return $0.front ==
+//            self.cards[self.currentCard].front &&
+//            $0.back == self.cards[self.currentCard].back}).count >= 1 {
+//            
+//            let currentCardIndexInUnknownCardList = self.unknownCards.index(where:
+//                {$0.front == self.cards[self.currentCard].front})
+//            self.unknownCards.remove(at: currentCardIndexInUnknownCardList!)
+//            self.unknownCardCount.text = String(unknownCards.count)
+//        }
+//        
+//        // Update the knownCardCount
+//        self.knownCardCount.text = String(knownCards.count)
+//        
+//        // Animate the counter to make it look pretty!
+//        // self.knownCardCount.animateToFont(UIFont.systemFont(ofSize: 100), withDuration: 1)
+//        // self.knownCardCount.animateToFont(UIFont.systemFont(ofSize: 16), withDuration: 1)
+//        
+////        self.degradeCardArray()
+//        
+////    }
     
-    func appendUnknownCardArray(sender: Any){
-        self.unknownCards.append(Card(front:self.cards[self.currentCard].front,
-                                      back: self.cards[self.currentCard].back))
-        
-        // Check to see if the added card is a duplicate
-        // If duplicate --> remove
-        // If not --> do nothing
-        if self.unknownCards.filter( {return $0.front ==
-            self.cards[self.currentCard].front &&
-            $0.back == self.cards[self.currentCard].back}).count > 1  {
-            self.unknownCards.remove(at: self.unknownCards.count - 1)
-        }
-        
-        if self.knownCards.filter( {return $0.front ==
-            self.cards[self.currentCard].front && $0.back ==
-            self.cards[self.currentCard].back}).count >= 1 {
-            
-            let currentCardIndexInKnownCardList = self.knownCards.index(where:
-                {$0.front == self.cards[self.currentCard].front})
-            self.knownCards.remove(at: currentCardIndexInKnownCardList!)
-            self.knownCardCount.text = String(knownCards.count)
-        }
-        self.unknownCardCount.text = String(unknownCards.count)
-        
-//        self.overpackCardDeck(padding: self.arrayPadding)
-    }
+////    func appendUnknownCardArray(sender: Any){
+//        self.unknownCards.append(Card(front:self.cards[self.currentCard].front,
+//                                      back: self.cards[self.currentCard].back))
+//        
+//        // Check to see if the added card is a duplicate
+//        // If duplicate --> remove
+//        // If not --> do nothing
+//        if self.unknownCards.filter( {return $0.front ==
+//            self.cards[self.currentCard].front &&
+//            $0.back == self.cards[self.currentCard].back}).count > 1  {
+//            self.unknownCards.remove(at: self.unknownCards.count - 1)
+//        }
+//        
+//        if self.knownCards.filter( {return $0.front ==
+//            self.cards[self.currentCard].front && $0.back ==
+//            self.cards[self.currentCard].back}).count >= 1 {
+//            
+//            let currentCardIndexInKnownCardList = self.knownCards.index(where:
+//                {$0.front == self.cards[self.currentCard].front})
+//            self.knownCards.remove(at: currentCardIndexInKnownCardList!)
+//            self.knownCardCount.text = String(knownCards.count)
+//        }
+//        self.unknownCardCount.text = String(unknownCards.count)
+//        
+////        self.overpackCardDeck(padding: self.arrayPadding)
+//    }
     
     
     

@@ -9,10 +9,8 @@
 import Foundation
 
 class Deck {
-    
     var cards = Array<Card>()
     
-    init(cards: Array<Card>)        {
-        self.cards = cards
+    init(){
     }
 }
