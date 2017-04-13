@@ -13,9 +13,9 @@
 		E24E951D1E9C0E9200DFD50A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E24E951C1E9C0E9200DFD50A /* Assets.xcassets */; };
 		E24E95201E9C0E9200DFD50A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24E951E1E9C0E9200DFD50A /* LaunchScreen.storyboard */; };
 		E24E95281E9C0EA700DFD50A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24E95271E9C0EA700DFD50A /* Card.swift */; };
-		E24E952A1E9CFF1F00DFD50A /* CardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24E95291E9CFF1F00DFD50A /* CardLoader.swift */; };
 		E24E952C1E9D00FC00DFD50A /* gre_list_kapplan.txt in Resources */ = {isa = PBXBuildFile; fileRef = E24E952B1E9D00FC00DFD50A /* gre_list_kapplan.txt */; };
 		E271A9271E9F84B9008C503C /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271A9261E9F84B9008C503C /* Deck.swift */; };
+		E271A92D1E9FBFAB008C503C /* CardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271A92C1E9FBFAB008C503C /* CardGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +27,9 @@
 		E24E951F1E9C0E9200DFD50A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E24E95211E9C0E9200DFD50A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E24E95271E9C0EA700DFD50A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		E24E95291E9CFF1F00DFD50A /* CardLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLoader.swift; sourceTree = "<group>"; };
 		E24E952B1E9D00FC00DFD50A /* gre_list_kapplan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gre_list_kapplan.txt; sourceTree = "<group>"; };
 		E271A9261E9F84B9008C503C /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		E271A92C1E9FBFAB008C503C /* CardGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +66,8 @@
 				E24E95171E9C0E9200DFD50A /* ViewController.swift */,
 				E24E95271E9C0EA700DFD50A /* Card.swift */,
 				E271A9261E9F84B9008C503C /* Deck.swift */,
+				E271A92C1E9FBFAB008C503C /* CardGame.swift */,
 				E24E952B1E9D00FC00DFD50A /* gre_list_kapplan.txt */,
-				E24E95291E9CFF1F00DFD50A /* CardLoader.swift */,
 				E24E95191E9C0E9200DFD50A /* Main.storyboard */,
 				E24E951C1E9C0E9200DFD50A /* Assets.xcassets */,
 				E24E951E1E9C0E9200DFD50A /* LaunchScreen.storyboard */,
@@ -150,11 +150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E24E952A1E9CFF1F00DFD50A /* CardLoader.swift in Sources */,
 				E24E95181E9C0E9200DFD50A /* ViewController.swift in Sources */,
 				E271A9271E9F84B9008C503C /* Deck.swift in Sources */,
 				E24E95281E9C0EA700DFD50A /* Card.swift in Sources */,
 				E24E95161E9C0E9200DFD50A /* AppDelegate.swift in Sources */,
+				E271A92D1E9FBFAB008C503C /* CardGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

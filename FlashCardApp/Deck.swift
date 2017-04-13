@@ -10,14 +10,9 @@ import Foundation
 
 class Deck {
     
-    var length = Int()
+    var cards = Array<Card>()
     
-    init(cards: Array<AnyObject>) {
-        self.length = cards.count
+    init(cards: Array<Card>)        {
+        self.cards = cards
     }
-    
-    func addCards(currentCard: Int) -> <#return type#> {
-        <#function body#>
-    }
-    
 }
