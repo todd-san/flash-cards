@@ -11,6 +11,8 @@ import Foundation
 class Deck {
     var cards = Array<Card>()
     
-    init(){
+    init(cards: Array<Card>){
+        
+        self.cards = cards
     }
 }

@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     // Class Constants & Variables
     var currentCard = 0
     var cards: Array<Card> = []
-    var cardDeck = Deck()
-    var Game = CardGame(cardDeck: Deck(), name: "First Game", buffer: 15)
+    var cardDeck = Deck(cards: [])
+    var Game = CardGame(cardDeck: Deck(cards: []), name: "First Game", buffer: 15)
     
     // Class Override Functions
     override func viewDidLoad() {
@@ -161,7 +161,7 @@ class ViewController: UIViewController {
         if self.currentCard >= self.cards.count{
             self.currentCard = 0
         }
-        self.cardLabel.text = self.deck.cards[self.currentCard].front
+        self.cardLabel.text = self.cardDeck.cards[self.currentCard].front
         self.cardDefinitionLabel.text = " "
         self.currentCardLabel.text = String(self.currentCard)
     }
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
     func triggerPreviousCard(_ sender: Any) {
         
         if self.currentCard == 0 {
-            self.currentCard = self.deck.cards.count - 1
+            self.currentCard = self.cardDeck.cards.count - 1
             self.cardLabel.text = self.cards[self.currentCard].front
             self.cardDefinitionLabel.text = " "
             self.currentCardLabel.text = String(self.currentCard)

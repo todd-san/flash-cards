@@ -10,13 +10,13 @@ import Foundation
 
 class CardGame {
     
-    var cardDeck = Deck(cards: Array<Card>())
-    var unknown = Deck(cards: Array<Card>())
-    var known = Deck(cards: Array<Card>())
-    var seen = Deck(cards: Array<Card>())
-    var unseen = Deck(cards: Array<Card>())
-    var closeProximity = Deck(cards: Array<Card>())
-    var buffedProximity = Deck(cards: Array<Card>())
+    var cardDeck = Deck(cards: [])
+    var unknown = Deck(cards: [])
+    var known = Deck(cards: [])
+    var seen = Deck(cards: [])
+    var unseen = Deck(cards: [])
+    var closeProximity = Deck(cards: [])
+    var buffedProximity = Deck(cards: [])
     var name = String()
     var buffer = 15
     
